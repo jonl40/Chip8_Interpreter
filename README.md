@@ -1,3 +1,12 @@
-# Chip8InCCourse
-This repository has been created for the Chip8 in C programming course which will be available on Udemy soon.
-This is a chip8 emulator repository created for the development of a "How to develop a Chip8 emulator" course
+Chip8_Interpreter
+Thank you to nibblebits' Chip8 C programming course.
+
+References:
+
+https://www.udemy.com/course/creating-a-chip-8-emulator-in-c/
+
+http://www.emulator101.com/chip-8-emulator.html
+
+http://craigthomas.ca/blog/2014/06/21/writing-a-chip-8-emulator-part-1/
+
+http://devernay.free.fr/hacks/chip8/C8TECH10.HTM#0.0
