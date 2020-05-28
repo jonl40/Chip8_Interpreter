@@ -1,4 +1,5 @@
-Chip8_Interpreter
+#Chip8_Interpreter
+
 Thank you to nibblebits' Chip8 C programming course.
 
 References:
