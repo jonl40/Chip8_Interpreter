@@ -1,5 +1,4 @@
 #include <memory.h>
-#include <stdlib.h>
 #include "chip8.h"
 #include "config.h"
 
