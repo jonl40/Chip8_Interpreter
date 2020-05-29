@@ -36,8 +36,6 @@ int main(int argc, char *argv[])
     // Create a renderere (accelerated and insync with the dispay refresh rate)
     SDL_Renderer *renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
     
-    // Draw colour is white 
-    SDL_SetRenderDrawColor(renderer, 255, 255, 255, 0);
 
     bool running = true;
     SDL_Event event;
@@ -50,7 +48,12 @@ int main(int argc, char *argv[])
                 running = false; 
         }
 
-        // Draw 
+        // Clear screen with black 
+        SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+        SDL_RenderClear(renderer);
+
+        // Draw white pixel
+        SDL_SetRenderDrawColor(renderer, 255, 255, 255, 0);
         SDL_Rect rect = {50, 100, 45, 45}; // x, y, width, height 
         SDL_RenderFillRect(renderer, &rect);
 
