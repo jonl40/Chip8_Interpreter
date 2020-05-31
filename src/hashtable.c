@@ -14,8 +14,6 @@ unsigned int hash(int key) {
 entry_t *ht_pair(int key, int value) {
     // allocate the entry
     entry_t *entry = malloc(sizeof(entry_t) * 1);
-    entry->key = malloc(sizeof(key) + 1);
-    entry->value = malloc(sizeof(value) + 1);
 
     // copy the key and value in place
     entry->key = key;
@@ -68,10 +66,7 @@ void ht_set(ht_t *hashtable, int key, int value) {
     while (entry != NULL) {
         // check key
         if (entry->key == key) {
-            // match found, replace value
-            free(entry->value);
-            entry->value = malloc(sizeof(value) + 1);
-            entry->value = value;
+            // match found, return
             return;
         }
 
@@ -84,7 +79,7 @@ void ht_set(ht_t *hashtable, int key, int value) {
     prev->next = ht_pair(key, value);
 }
 
-int *ht_get(ht_t *hashtable, int key) {
+int ht_get(ht_t *hashtable, int key) {
     unsigned int slot = hash(key);
 
     // try to find a valid slot
@@ -144,9 +139,6 @@ void ht_destroy(ht_t *hashtable)
     for(i = 0; i < hashtable->size; i++) {
         for(cur = hashtable->entries[i]; cur != 0; cur = next) {
             next = cur->next;
-
-            free(cur->key);
-            free(cur->value);
             free(cur);
         }
     }
