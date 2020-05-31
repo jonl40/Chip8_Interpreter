@@ -4,6 +4,7 @@
 #include <stdint.h>
 #include <stdbool.h>
 #include "config.h"
+#include "hashtable.h"
 
 struct chip8
 {
@@ -17,7 +18,7 @@ struct chip8
     uint16_t Stack[CHIP8_STACK_SIZE];
     bool Pixels[CHIP_8_SCREEN_WIDTH][CHIP_8_SCREEN_HEIGHT];
     bool keyboard[CHIP8_TOTAL_KEYS];
-    const char *keyboard_map;
+    ht_t HashTable;
 };
 
 void init_chip8(struct chip8 *chip8);

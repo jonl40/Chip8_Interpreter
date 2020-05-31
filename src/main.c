@@ -3,6 +3,9 @@
 #include "SDL2/SDL.h"
 #include "chip8.h"
 #include "chip8memory.h"
+#include "chip8keyboard.h"
+#include "hashtable.h"
+
 
 int main(int argc, char *argv[]) 
 {
@@ -11,15 +14,22 @@ int main(int argc, char *argv[])
     init_chip8(&chip8);
 
     //test memory functions 
-    chip8_memory_set(&chip8, 0x400, 'Z');
-    printf("%c\n",chip8_memory_get(&chip8, 0x400));
-    printf("%d\n",chip8_memory_get(&chip8, 0x402));
+    //chip8_memory_set(&chip8, 0x400, 'Z');
+    //printf("%c\n",chip8_memory_get(&chip8, 0x400));
+    //printf("%d\n",chip8_memory_get(&chip8, 0x402));
 
-    printf("%x\n",chip8_memory_get(&chip8, 0x000));
-    printf("%x\n",chip8_memory_get(&chip8, 0x001));
-    printf("%x\n",chip8_memory_get(&chip8, 0x002));
-    printf("%x\n",chip8_memory_get(&chip8, 0x003));
-    printf("%x\n",chip8_memory_get(&chip8, 0x004));
+    //printf("%x\n",chip8_memory_get(&chip8, 0x000));
+    //printf("%x\n",chip8_memory_get(&chip8, 0x001));
+    //printf("%x\n",chip8_memory_get(&chip8, 0x002));
+    //printf("%x\n",chip8_memory_get(&chip8, 0x003));
+    //printf("%x\n",chip8_memory_get(&chip8, 0x004));
+
+    //create hashtable 
+    ht_t *ht = ht_create();
+
+    chip8_keyboard_set_ht(&chip8, ht);
+
+    ht_dump(ht);
 
     /* load rom */
 
@@ -70,6 +80,9 @@ int main(int argc, char *argv[])
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
     SDL_Quit();
+
+    // free hash table 
+    ht_destroy(ht);
 
     return 0;
 }
