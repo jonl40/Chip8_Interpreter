@@ -2,6 +2,7 @@
 #include "SDL2/SDL.h"
 #include "hashtable.h"
 
+/* Set hashtable with SDLK key and value pairs */
 void chip8_keyboard_set_ht(struct chip8 *chip8, ht_t *hashtable)
 {
     // key, value 

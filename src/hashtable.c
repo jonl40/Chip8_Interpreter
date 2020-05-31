@@ -4,6 +4,7 @@
 #include <string.h>
 #include "hashtable.h"
 
+/* Hashing function */
 unsigned int hash(int key) {
     unsigned long int value = 0;
     // make sure value is 0 <= value < TABLE_SIZE
@@ -11,6 +12,7 @@ unsigned int hash(int key) {
     return value;
 }
 
+/* Store key and value data into struct */
 entry_t *ht_pair(int key, int value) {
     // allocate the entry
     entry_t *entry = malloc(sizeof(entry_t) * 1);
@@ -25,6 +27,7 @@ entry_t *ht_pair(int key, int value) {
     return entry;
 }
 
+/* Allocate memory for hashtable */
 ht_t *internal_ht_create(int size) {
     // allocate table
     ht_t *hashtable = malloc(sizeof(ht_t) * 1);
@@ -42,11 +45,13 @@ ht_t *internal_ht_create(int size) {
     return hashtable;
 }
 
+/* Create hashtable */
 ht_t *ht_create(void)
 {
     return internal_ht_create(TABLE_SIZE);
 }
 
+/* Set key value pair */
 void ht_set(ht_t *hashtable, int key, int value) {
     unsigned int slot = hash(key);
 
@@ -79,6 +84,7 @@ void ht_set(ht_t *hashtable, int key, int value) {
     prev->next = ht_pair(key, value);
 }
 
+/* Get value from given key */
 int ht_get(ht_t *hashtable, int key) {
     unsigned int slot = hash(key);
 
@@ -90,6 +96,7 @@ int ht_get(ht_t *hashtable, int key) {
         return NULL;
     }
 
+    // if there are collisions search linked list
     // walk through each entry in the slot, which could just be a single thing
     while (entry != NULL) {
         // return value if found
@@ -105,6 +112,7 @@ int ht_get(ht_t *hashtable, int key) {
     return NULL;
 }
 
+/* Display contents of hashtable */
 void ht_dump(ht_t *hashtable) {
     for (int i = 0; i < TABLE_SIZE; ++i) {
         entry_t *entry = hashtable->entries[i];
@@ -129,7 +137,7 @@ void ht_dump(ht_t *hashtable) {
     }
 }
 
-
+/* Free hashtable from memory */
 void ht_destroy(ht_t *hashtable)
 {
     int i;

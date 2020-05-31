@@ -29,23 +29,23 @@ int main(int argc, char *argv[])
 
     chip8_keyboard_set_ht(&chip8, ht);
 
-    ht_dump(ht);
-    printf("SDLK_0: %d = %x\n", SDLK_0 ,ht_get(ht, SDLK_0));
-    printf("SDLK_1: %d = %x\n", SDLK_1 ,ht_get(ht, SDLK_1));
-    printf("SDLK_2: %d = %x\n", SDLK_2,ht_get(ht, SDLK_2));
-    printf("SDLK_3: %d = %x\n", SDLK_3,ht_get(ht, SDLK_3));
-    printf("SDLK_4: %d = %x\n", SDLK_4,ht_get(ht, SDLK_4));
-    printf("SDLK_5: %d = %x\n", SDLK_5,ht_get(ht, SDLK_5));
-    printf("SDLK_6: %d = %x\n", SDLK_6,ht_get(ht, SDLK_6));
-    printf("SDLK_7: %d = %x\n", SDLK_7,ht_get(ht, SDLK_7));
-    printf("SDLK_8: %d = %x\n", SDLK_8,ht_get(ht, SDLK_8));
-    printf("SDLK_9: %d = %x\n", SDLK_9,ht_get(ht, SDLK_9));
-    printf("SDLK_a: %d = %x\n", SDLK_a,ht_get(ht, SDLK_a));
-    printf("SDLK_b: %d = %x\n", SDLK_b,ht_get(ht, SDLK_b));
-    printf("SDLK_c: %d = %x\n", SDLK_c,ht_get(ht, SDLK_c));
-    printf("SDLK_d: %d = %x\n", SDLK_d,ht_get(ht, SDLK_d));
-    printf("SDLK_e: %d = %x\n", SDLK_e,ht_get(ht, SDLK_e));
-    printf("SDLK_f: %d = %x\n", SDLK_f,ht_get(ht, SDLK_f));
+    ht_dump(&chip8.HashTable);
+    printf("SDLK_0: %d = %x\n", SDLK_0,ht_get(&chip8.HashTable, SDLK_0));
+    printf("SDLK_1: %d = %x\n", SDLK_1,ht_get(&chip8.HashTable, SDLK_1));
+    printf("SDLK_2: %d = %x\n", SDLK_2,ht_get(&chip8.HashTable, SDLK_2));
+    printf("SDLK_3: %d = %x\n", SDLK_3,ht_get(&chip8.HashTable, SDLK_3));
+    printf("SDLK_4: %d = %x\n", SDLK_4,ht_get(&chip8.HashTable, SDLK_4));
+    printf("SDLK_5: %d = %x\n", SDLK_5,ht_get(&chip8.HashTable, SDLK_5));
+    printf("SDLK_6: %d = %x\n", SDLK_6,ht_get(&chip8.HashTable, SDLK_6));
+    printf("SDLK_7: %d = %x\n", SDLK_7,ht_get(&chip8.HashTable, SDLK_7));
+    printf("SDLK_8: %d = %x\n", SDLK_8,ht_get(&chip8.HashTable, SDLK_8));
+    printf("SDLK_9: %d = %x\n", SDLK_9,ht_get(&chip8.HashTable, SDLK_9));
+    printf("SDLK_a: %d = %x\n", SDLK_a,ht_get(&chip8.HashTable, SDLK_a));
+    printf("SDLK_b: %d = %x\n", SDLK_b,ht_get(&chip8.HashTable, SDLK_b));
+    printf("SDLK_c: %d = %x\n", SDLK_c,ht_get(&chip8.HashTable, SDLK_c));
+    printf("SDLK_d: %d = %x\n", SDLK_d,ht_get(&chip8.HashTable, SDLK_d));
+    printf("SDLK_e: %d = %x\n", SDLK_e,ht_get(&chip8.HashTable, SDLK_e));
+    printf("SDLK_f: %d = %x\n", SDLK_f,ht_get(&chip8.HashTable, SDLK_f));
 
     /* load rom */
 
@@ -99,6 +99,7 @@ int main(int argc, char *argv[])
 
     // free hash table from memory 
     ht_destroy(ht);
+    ht_destroy(&chip8.HashTable);
 
     return 0;
 }

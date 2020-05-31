@@ -17,6 +17,7 @@ typedef struct {
 
 unsigned int hash(int key);
 entry_t *ht_pair(int key, int value);
+entry_t *ht_pair(int key, int value);
 ht_t *internal_ht_create(int size);
 ht_t *ht_create(void);
 void ht_set(ht_t *hashtable, int key, int value);
