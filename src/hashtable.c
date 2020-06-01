@@ -38,7 +38,7 @@ ht_t *internal_ht_create(int size) {
 
     // set each to null (needed for proper operation)
     int i = 0;
-    for (; i < size; ++i) {
+    for (; i < hashtable->size; ++i) {
         hashtable->entries[i] = NULL;
     }
 
