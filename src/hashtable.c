@@ -71,7 +71,8 @@ void ht_set(ht_t *hashtable, int key, int value) {
     while (entry != NULL) {
         // check key
         if (entry->key == key) {
-            // match found, return
+            // match found reassign value
+            entry->value = value;
             return;
         }
 
@@ -114,7 +115,7 @@ int ht_get(ht_t *hashtable, int key) {
 
 /* Display contents of hashtable */
 void ht_dump(ht_t *hashtable) {
-    for (int i = 0; i < TABLE_SIZE; ++i) {
+    for (int i = 0; i < hashtable->size; ++i) {
         entry_t *entry = hashtable->entries[i];
 
         if (entry == NULL) {
@@ -145,7 +146,7 @@ void ht_destroy(ht_t *hashtable)
     entry_t *next;
 
     for(i = 0; i < hashtable->size; i++) {
-        for(cur = hashtable->entries[i]; cur != 0; cur = next) {
+        for(cur = hashtable->entries[i]; cur != NULL; cur = next) {
             next = cur->next;
             free(cur);
         }
