@@ -80,10 +80,12 @@ int main(int argc, char *argv[])
                     {
                         int key = event.key.keysym.sym;
                         int vkey = chip8_keyboard_ht(&chip8, key);
+                        //keyboard key pressed is mapped to a virtual key
                         if(vkey != -1)
                         {
                             chip8_keyboard_down(&chip8, vkey);
                             printf("key is down %x\n", vkey);
+                            printf(" chip8.keyboard[%d] = %d\n", vkey, chip8.keyboard[vkey]);
                         }
                     }
                     break;
@@ -96,6 +98,7 @@ int main(int argc, char *argv[])
                         {
                             chip8_keyboard_up(&chip8, vkey);
                             printf("key is up\n");
+                            printf(" chip8.keyboard[%d] = %d\n", vkey, chip8.keyboard[vkey]);
                         }
                     }
                     break;
