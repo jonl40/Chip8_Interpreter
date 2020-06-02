@@ -70,8 +70,37 @@ int main(int argc, char *argv[])
         //process events
         while(SDL_PollEvent(&event))
         {
-            if(event.type == SDL_QUIT)
-                running = false; 
+            switch(event.type)
+            {
+                case SDL_QUIT:
+                    running = false;
+                    break;
+
+                case SDL_KEYDOWN:
+                    {
+                        int key = event.key.keysym.sym;
+                        int vkey = chip8_keyboard_ht(&chip8, key);
+                        if(vkey != -1)
+                        {
+                            chip8_keyboard_down(&chip8, vkey);
+                            printf("key is down %x\n", vkey);
+                        }
+                    }
+                    break;
+
+                case SDL_KEYUP:
+                    {
+                        int key = event.key.keysym.sym;
+                        int vkey = chip8_keyboard_ht(&chip8, key);
+                        if(vkey != -1)
+                        {
+                            chip8_keyboard_up(&chip8, vkey);
+                            printf("key is up\n");
+                        }
+                    }
+                    break;
+            }
+
         }
 
         // Clear screen with black 

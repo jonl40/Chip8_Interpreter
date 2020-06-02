@@ -24,3 +24,27 @@ void chip8_keyboard_set_ht(struct chip8 *chip8, ht_t *hashtable)
     ht_set(hashtable, SDLK_f, 15);
     chip8->HashTable = *hashtable;
 }
+
+/* Get value from key value pair */
+/* Get value mapped to keyboard key*/
+int chip8_keyboard_ht(struct chip8 *chip8, int key)
+{
+    int vkey = ht_get(&chip8->HashTable, key);
+    return vkey;
+}
+
+void chip8_keyboard_down(struct chip8 *chip8, int key)
+{
+    chip8->keyboard[key] = true;
+}
+
+void chip8_keyboard_up(struct chip8 *chip8, int key)
+{
+    chip8->keyboard[key] = false;
+}
+
+bool chip8_keyboard_is_down(struct chip8 *chip8, int key)
+{
+    return chip8->keyboard[key];
+}
+

@@ -94,7 +94,7 @@ int ht_get(ht_t *hashtable, int key) {
 
     // no slot means no entry
     if (entry == NULL) {
-        return NULL;
+        return -1;
     }
 
     // if there are collisions search linked list
@@ -110,7 +110,7 @@ int ht_get(ht_t *hashtable, int key) {
     }
 
     // reaching here means there were >= 1 entries but no key match
-    return NULL;
+    return -1;
 }
 
 /* Display contents of hashtable */
