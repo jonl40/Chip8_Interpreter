@@ -25,7 +25,7 @@ void chip8_keyboard_set_ht(struct chip8 *chip8, ht_t *hashtable)
     chip8->HashTable = *hashtable;
 }
 
-/* Get value from key value pair */
+
 /* Get value mapped to keyboard key*/
 int chip8_keyboard_ht(struct chip8 *chip8, int key)
 {
@@ -33,16 +33,22 @@ int chip8_keyboard_ht(struct chip8 *chip8, int key)
     return vkey;
 }
 
+/* Set chip8 keyboard array to true at key index */
+/* Key pressed down denoted by true */
 void chip8_keyboard_down(struct chip8 *chip8, int key)
 {
     chip8->keyboard[key] = true;
 }
 
+/* Set chip8 keyboard array to false at key index */
+/* Unpressed key denoted by false */
 void chip8_keyboard_up(struct chip8 *chip8, int key)
 {
     chip8->keyboard[key] = false;
 }
 
+/* Return true if specified key is down */
+/* Return false if specified key is up */
 bool chip8_keyboard_is_down(struct chip8 *chip8, int key)
 {
     return chip8->keyboard[key];

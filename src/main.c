@@ -87,6 +87,12 @@ int main(int argc, char *argv[])
                             printf("key is down %x\n", vkey);
                             printf(" chip8.keyboard[%d] = %d\n", vkey, chip8.keyboard[vkey]);
                         }
+
+                        //later will be used to load and reload save state
+                        if(key == SDLK_k || key == SDLK_l)
+                        {
+                            printf("Key is down %c\n", key);
+                        }
                     }
                     break;
 
@@ -99,6 +105,11 @@ int main(int argc, char *argv[])
                             chip8_keyboard_up(&chip8, vkey);
                             printf("key is up\n");
                             printf(" chip8.keyboard[%d] = %d\n", vkey, chip8.keyboard[vkey]);
+                        }
+
+                        if(key == SDLK_k || key == SDLK_l)
+                        {
+                            printf("Key is up %c\n", key);
                         }
                     }
                     break;
