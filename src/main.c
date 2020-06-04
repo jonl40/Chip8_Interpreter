@@ -50,15 +50,15 @@ int main(int argc, char *argv[])
 
     chip8_stack_push(&chip8, 0xff);
     chip8_stack_push(&chip8, 0xaa);
+
+    printf("chip8.SP is %d\n", chip8.SP);
+
+    printf("%x\n",chip8_stack_pop(&chip8));
+    printf("%x\n",chip8_stack_pop(&chip8));
+
+    printf("chip8.SP is %d\n", chip8.SP);
     
-    printf("chip8.SP is %d\n", chip8.SP);
-
-    printf("%x\n",chip8_stack_pop(&chip8));
-    printf("%x\n",chip8_stack_pop(&chip8));
-
-    printf("chip8.SP is %d\n", chip8.SP);
-
-   
+    
 
 
 
