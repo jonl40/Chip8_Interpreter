@@ -1,4 +1,5 @@
 #include "chip8.h"
+#include "chip8keyboard.h"
 #include "SDL2/SDL.h"
 #include "hashtable.h"
 

@@ -4,6 +4,7 @@
 #include "chip8.h"
 #include "chip8memory.h"
 #include "chip8keyboard.h"
+#include "chip8stack.h"
 #include "hashtable.h"
 
 
@@ -46,6 +47,21 @@ int main(int argc, char *argv[])
     printf("SDLK_d: %d = %x\n", SDLK_d,ht_get(&chip8.HashTable, SDLK_d));
     printf("SDLK_e: %d = %x\n", SDLK_e,ht_get(&chip8.HashTable, SDLK_e));
     printf("SDLK_f: %d = %x\n", SDLK_f,ht_get(&chip8.HashTable, SDLK_f));
+
+    chip8_stack_push(&chip8, 0xff);
+    chip8_stack_push(&chip8, 0xaa);
+    
+    printf("chip8.SP is %d\n", chip8.SP);
+
+    printf("%x\n",chip8_stack_pop(&chip8));
+    printf("%x\n",chip8_stack_pop(&chip8));
+
+    printf("chip8.SP is %d\n", chip8.SP);
+
+   
+
+
+
 
     /* load rom */
 

@@ -13,7 +13,7 @@ struct chip8
     uint8_t Delay_timer;
     uint8_t Sound_timer;
     uint16_t PC;
-    uint8_t SP;
+    int8_t SP;
     uint8_t Memory[CHIP8_TOTAL_MEMORY];
     uint16_t Stack[CHIP8_STACK_SIZE];
     bool Pixels[CHIP_8_SCREEN_WIDTH][CHIP_8_SCREEN_HEIGHT];
