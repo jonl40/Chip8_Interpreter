@@ -27,7 +27,7 @@ const char chip8_default_character_set[] = {
 void init_chip8(struct chip8 *chip8)
 {
     memset(chip8, 0, sizeof(struct chip8)); //initialize all chip8 memory to zero 
-    memcpy(&chip8->Memory, chip8_default_character_set, sizeof(chip8_default_character_set));  //load character set into memory
+    memcpy(&chip8->Memory[CHIP8_START_RAM], chip8_default_character_set, sizeof(chip8_default_character_set));  //load character set into memory
     chip8->SP = -1;
 }
 

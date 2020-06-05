@@ -25,6 +25,7 @@ bool chip8_pixel_is_set(struct chip8 *chip8, int x, int y)
 /* Return true if collision is detected */
 bool chip8_render_sprite(struct chip8 *chip8, int x, int y, const char *sprite, int num)
 {
+    chip8_screen_in_bounds(x,y);
     // VF register set to 0 if no collision is detected
     bool VF_collision = false;
 
