@@ -63,7 +63,6 @@ int main(int argc, char *argv[])
     chip8_render_sprite(&chip8, 32, 10, &chip8.Memory[0x4B], 5);
     /* load rom */
 
-
     // Initialize SDL
     SDL_Init(SDL_INIT_EVERYTHING);
 
@@ -75,10 +74,10 @@ int main(int argc, char *argv[])
     // Create a renderer (accelerated and insync with the dispay refresh rate)
     SDL_Renderer *renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
     
-
     bool running = true;
     SDL_Event event;
     /* Emulation loop */
+
     while(running)
     {
         //process events
@@ -160,10 +159,9 @@ int main(int argc, char *argv[])
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
     SDL_Quit();
-
+    
     // free hash table from memory 
     ht_destroy(ht);
-    ht_destroy(&chip8.HashTable);
 
     return 0;
 }
