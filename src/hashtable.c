@@ -148,6 +148,8 @@ void ht_destroy(ht_t *hashtable)
     for(i = 0; i < hashtable->size; i++) {
         for(cur = hashtable->entries[i]; cur != NULL; cur = next) {
             next = cur->next;
+            free(&cur->key);
+            free(&cur->value);
             free(cur);
         }
     }
