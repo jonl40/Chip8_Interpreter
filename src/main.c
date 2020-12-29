@@ -16,9 +16,9 @@ int main(int argc, char *argv[])
     init_chip8(&chip8);
 
     //test memory functions 
-    //chip8_memory_set(&chip8, 0x400, 'Z');
-    //printf("%c\n",chip8_memory_get(&chip8, 0x400));
-    //printf("%d\n",chip8_memory_get(&chip8, 0x402));
+    chip8_memory_set(&chip8, 0x400, 'Z');
+    printf("%c\n",chip8_memory_get(&chip8, 0x400));
+    printf("%d\n",chip8_memory_get(&chip8, 0x402));
 
     printf("%x\n",chip8_memory_get(&chip8, 0x000));
     printf("%x\n",chip8_memory_get(&chip8, 0x001));
@@ -31,7 +31,7 @@ int main(int argc, char *argv[])
 
     chip8_keyboard_set_ht(&chip8, ht);
 
-    ht_dump(&chip8.HashTable);
+    //ht_dump(&chip8.HashTable);
     printf("SDLK_0: %d = %x\n", SDLK_0,ht_get(&chip8.HashTable, SDLK_0));
     printf("SDLK_1: %d = %x\n", SDLK_1,ht_get(&chip8.HashTable, SDLK_1));
     printf("SDLK_2: %d = %x\n", SDLK_2,ht_get(&chip8.HashTable, SDLK_2));
@@ -49,18 +49,53 @@ int main(int argc, char *argv[])
     printf("SDLK_e: %d = %x\n", SDLK_e,ht_get(&chip8.HashTable, SDLK_e));
     printf("SDLK_f: %d = %x\n", SDLK_f,ht_get(&chip8.HashTable, SDLK_f));
 
-    chip8_stack_push(&chip8, 0xff);
-    chip8_stack_push(&chip8, 0xaa);
+    chip8_stack_push(&chip8, 0x00);
+    chip8_stack_push(&chip8, 0x01);
+    chip8_stack_push(&chip8, 0x02);
+    chip8_stack_push(&chip8, 0x03);
+
+    chip8_stack_push(&chip8, 0x04);
+    chip8_stack_push(&chip8, 0x05);
+    chip8_stack_push(&chip8, 0x06);
+    chip8_stack_push(&chip8, 0x07);
+
+    chip8_stack_push(&chip8, 0x08);
+    chip8_stack_push(&chip8, 0x09);
+    chip8_stack_push(&chip8, 0x0a);
+    chip8_stack_push(&chip8, 0x0b);
+
+    chip8_stack_push(&chip8, 0x0c);
+    chip8_stack_push(&chip8, 0x0d);
+    chip8_stack_push(&chip8, 0x0e);
+    chip8_stack_push(&chip8, 0x0f);
+
 
     printf("chip8.SP is %d\n", chip8.SP);
 
     printf("%x\n",chip8_stack_pop(&chip8));
     printf("%x\n",chip8_stack_pop(&chip8));
+    printf("%x\n",chip8_stack_pop(&chip8));
+    printf("%x\n",chip8_stack_pop(&chip8));
 
-    printf("chip8.SP is %d\n", chip8.SP);
+    printf("%x\n",chip8_stack_pop(&chip8));
+    printf("%x\n",chip8_stack_pop(&chip8));
+    printf("%x\n",chip8_stack_pop(&chip8));
+    printf("%x\n",chip8_stack_pop(&chip8));
+
+    printf("%x\n",chip8_stack_pop(&chip8));
+    printf("%x\n",chip8_stack_pop(&chip8));
+    printf("%x\n",chip8_stack_pop(&chip8));
+    printf("%x\n",chip8_stack_pop(&chip8));
+
+    printf("%x\n",chip8_stack_pop(&chip8));
+    printf("%x\n",chip8_stack_pop(&chip8));
+    printf("%x\n",chip8_stack_pop(&chip8));
+    printf("%x\n",chip8_stack_pop(&chip8));
+
     
 
     chip8_render_sprite(&chip8, 32, 10, &chip8.Memory[0x4B], 5);
+    chip8_render_sprite(&chip8, 0, 30, &chip8.Memory[0x00], 5);
     /* load rom */
 
     // Initialize SDL
